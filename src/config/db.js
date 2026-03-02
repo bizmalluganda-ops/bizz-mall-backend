@@ -7,6 +7,15 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: "postgres",
   protocol: "postgres",
   logging: false,
+  dialectOptions:
+    process.env.NODE_ENV === "production"
+      ? {
+          ssl: {
+            require: true,
+            rejectUnauthorized: false, // very important for Railway
+          },
+        }
+      : {},
 });
 
 (async () => {
