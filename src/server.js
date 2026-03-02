@@ -8,7 +8,10 @@ import cookieParser from "cookie-parser";
 
 dotenv.config();
 
-const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://bizz-mall.vercel.app/",
+];
 
 const app = express();
 app.use(
