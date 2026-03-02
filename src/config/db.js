@@ -12,7 +12,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
       ? {
           ssl: {
             require: true,
-            rejectUnauthorized: false, // very important for Railway
+            rejectUnauthorized: false,
           },
         }
       : {},
