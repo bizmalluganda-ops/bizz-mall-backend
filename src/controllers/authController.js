@@ -61,7 +61,7 @@ export const login = async (req, res) => {
       res.cookie("admin_token", accessToken, {
         httpOnly: true,
         secure: isProduction ? true : false,
-        sameSite: isProduction ? "strict" : "lax",
+        sameSite: "none",
         path: "/",
       });
       return res.status(200).json({
