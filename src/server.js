@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import sequelize from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
+import adminRoues from "./routes/adminRoutes.js";
 import businessRoutes from "./routes/businessRoutes.js";
 import cookieParser from "cookie-parser";
 
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/business", businessRoutes);
+app.use("/api/admin", adminRoues);
 
 sequelize
   .sync({ alter: true })
