@@ -7,15 +7,11 @@ import {
   deleteBusiness,
   getAllBusinesses,
   getBusiness,
-  getFeaaturedBusinnesses,
-  getIInnvestmentBusinesses,
 } from "../controllers/businessController.js";
 import verifyToken from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.get("/featured", getFeaaturedBusinnesses);
-router.get("/investments", getIInnvestmentBusinesses);
 router.get("/", getAllBusinesses);
 router.get("/:id", verifyToken, verifyIsAdmin, getBusiness);
 router.post(
