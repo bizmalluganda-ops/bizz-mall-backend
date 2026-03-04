@@ -136,44 +136,6 @@ export const getBusiness = async (req, res) => {
   }
 };
 
-export const getFeaaturedBusinnesses = async (req, res) => {
-  try {
-    const featuredBusinnesses = await Business.findAll({
-      where: {
-        is_featured: true,
-      },
-    });
-    res.status(200).json({
-      message: "Succesfuly fetched featured business",
-      featuredBusinnesses,
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: "Failed to fetch featured businesses",
-      error: error.message,
-    });
-  }
-};
-
-export const getIInnvestmentBusinesses = async (req, res) => {
-  try {
-    const featuredBusinnesses = await Business.findAll({
-      where: {
-        is_investment: true,
-      },
-    });
-    res.status(200).json({
-      message: "Succesfuly fetched Investment business",
-      featuredBusinnesses,
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: "Failed to fetch featured businesses",
-      error: error.message,
-    });
-  }
-};
-
 export const getAllBusinesses = async (req, res) => {
   try {
     const { is_featured, is_investment, limit } = req.query;
