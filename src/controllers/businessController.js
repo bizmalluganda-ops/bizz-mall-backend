@@ -176,7 +176,27 @@ export const getIInnvestmentBusinesses = async (req, res) => {
 
 export const getAllBusinesses = async (req, res) => {
   try {
-    const businesses = await Business.findAll();
+    const { is_featured, is_investment, limit } = req.query;
+
+    let whereClause = {};
+    let options = {};
+
+    if (is_featured !== undefined) {
+      whereClause.is_featured = is_featured === "true";
+    }
+
+    if (is_investment !== undefined) {
+      whereClause.is_investment = is_investment === "true";
+    }
+
+    if (limit) {
+      options.limit = parseInt(limit);
+    }
+
+    const businesses = await Business.findAll({
+      where: whereClause,
+      ...options,
+    });
     res.status(200).json({
       message: "Successfully fetched all the businesses",
       businesses,
