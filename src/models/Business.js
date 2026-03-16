@@ -47,6 +47,11 @@ const Business = sequelize.define("Business", {
     allowNull: false,
     defaultValue: false,
   },
+  is_ours: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+  },
   coverImage: {
     type: DataTypes.STRING,
     allowNull: true,

@@ -57,6 +57,7 @@ export const updateBusiness = async (req, res) => {
       current_price,
       is_featured,
       is_investment,
+      is_ours,
     } = req.body;
 
     if (title) updateFields.title = title;
@@ -64,11 +65,15 @@ export const updateBusiness = async (req, res) => {
     if (highlights) updateFields.highlights = JSON.parse(highlights);
     if (price) updateFields.price = price;
     if (current_price) updateFields.current_price = current_price;
+
     if (typeof is_featured !== "undefined")
       updateFields.is_featured = is_featured;
 
     if (typeof is_investment !== "undefined")
       updateFields.is_investment = is_investment;
+    if (typeof is_ours !== "undefined") {
+      updateFields.is_ours = is_ours;
+    }
     if (req.file) {
       if (!process.env.CLOUDINARY_API_KEY) {
         throw new Error("Cloudinary not configured properly");
