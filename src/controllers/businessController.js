@@ -143,7 +143,7 @@ export const getBusiness = async (req, res) => {
 
 export const getAllBusinesses = async (req, res) => {
   try {
-    const { is_featured, is_investment, limit } = req.query;
+    const { is_featured, is_investment, is_ours, limit } = req.query;
 
     let whereClause = {};
     let options = {};
@@ -154,6 +154,10 @@ export const getAllBusinesses = async (req, res) => {
 
     if (is_investment !== undefined) {
       whereClause.is_investment = is_investment === "true";
+    }
+
+    if (is_ours !== undefined) {
+      whereClause.is_ours = is_ours === "true";
     }
 
     if (limit) {
